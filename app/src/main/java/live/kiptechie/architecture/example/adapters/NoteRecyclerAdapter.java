@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import live.kiptechie.architecture.example.R;
 import live.kiptechie.architecture.example.models.Note;
 
@@ -72,12 +70,9 @@ public class NoteRecyclerAdapter extends ListAdapter<Note, NoteRecyclerAdapter.N
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             textViewPriority = itemView.findViewById(R.id.text_view_priority);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = getAdapterPosition();
-                    if (listener != null && pos != RecyclerView.NO_POSITION) listener.onNoteClick(getItem(pos));
-                }
+            itemView.setOnClickListener(v -> {
+                int pos = getAdapterPosition();
+                if (listener != null && pos != RecyclerView.NO_POSITION) listener.onNoteClick(getItem(pos));
             });
         }
     }

@@ -36,13 +36,10 @@ public abstract class NoteDatabase extends RoomDatabase {
     };
 
     static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
-
         NoteDao noteDao;
-
         PopulateDbAsyncTask(NoteDatabase db) {
             noteDao = db.noteDao();
         }
-
         @Override
         protected Void doInBackground(Void... voids) {
             noteDao.insert(new Note(1,"Title 1", "Description 1"));
